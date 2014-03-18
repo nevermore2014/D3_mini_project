@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   listDistrict = function(data){
     var bar_height = 17;
     var left_distance_1 = 400;
@@ -175,8 +176,9 @@ $(document).ready(function(){
   $.get('/crimes/index.json')
     .success(listDistrict.bind(this))
     .success(listCrime.bind(this))
-
-  $.get('/lines/index.json')
-    .success(listPath.bind(this))
+    .success(function(){
+      $.get('/lines/index.json')
+        .success(listPath.bind(this))
+    })
 
 })
